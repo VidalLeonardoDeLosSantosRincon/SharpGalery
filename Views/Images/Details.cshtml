@@ -1,0 +1,39 @@
+﻿@model SharpGalery.Models.Image
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <hr/>
+    <dl class="dl-horizontal">
+        <dd>
+            <img src="@Url.Content(Model.ImagePath)" width="250" height="250" />
+        </dd>
+
+        @*<dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>*@
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        @*
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ImagePath)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ImagePath)
+        </dd>*@
+
+    </dl>
+    <hr/>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ImageId },new { @class="btn btn-default"}) 
+    @Html.ActionLink("Back to List", "Index",null,new { @class="btn btn-primary"})
+</p>

@@ -1,0 +1,77 @@
+﻿@model IEnumerable<SharpGalery.Models.Image>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<style>
+    tr{
+        background:rgba(0,0,0,0.02);
+        
+    }
+    a{
+        color:lightseagreen;
+        font-size:20px;
+    }
+
+    th{
+        font-size:20px;
+        font-weight:300;
+    }
+
+    td {
+        color: gray;
+        font-size: 15px;
+        font-weight: 300;
+    }
+</style>
+
+<h2>Uploaded Images</h2>
+<hr/>
+<p>
+    @Html.ActionLink("Create New", "Add")
+</p>
+<table class="table"  style="
+    background:white; 
+    border-radius:5px; 
+    border:none; 
+    color:black;
+    ">
+
+    <tr>
+        <th>
+            Image
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        @*d<th>
+            @Html.DisplayNameFor(model => model.ImagePath)
+        </th>*@
+        <th></th>
+    </tr>
+
+@foreach (var item in Model.Reverse()) {
+    <tr>
+        <td>
+           <a href="/Images/Details/@Html.DisplayFor(modelItem => item.ImageId)"> 
+               <img src="@Url.Content(item.ImagePath)" width="100" height="100" 
+                    style=" border-radius:5px; border:2px solid white; box-shadow:2px 2px 6px rgba(0,0,0,0.2);"/>
+           </a>
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.ImagePath)
+        </td>*@
+
+        <td>
+            @*Html.ActionLink("Edit", "Edit", new { id=item.ImageId }) |*@
+            @Html.ActionLink("Details", "Details", new { id=item.ImageId },new { @class="btn btn-primary"}) 
+            @Html.ActionLink("Delete", "Delete", new { id=item.ImageId },new { @class="btn btn-default" })
+        </td>
+    </tr>
+}
+
+</table>
