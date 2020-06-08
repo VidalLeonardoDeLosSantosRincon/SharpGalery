@@ -67,9 +67,10 @@
         </td>*@
 
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ImageId })
-            @Html.ActionLink("Details", "Details", new { id=item.ImageId },new { @class="btn btn-primary"}) 
-            @Html.ActionLink("Delete", "Delete", new { id=item.ImageId },new { @class="btn btn-default" })
+            @Html.ActionLink("Details", "Details", new { id = item.ImageId }, new { @class = "btn btn-primary" })
+            @Html.ActionLink("Edit", "Edit", new { id = item.ImageId }, new { @class = "btn btn-default" })
+            @Html.ActionLink("Delete", "Delete", new { id = item.ImageId }, new { @class = "btn btn-default" })
+
         </td>
     </tr>
 }
