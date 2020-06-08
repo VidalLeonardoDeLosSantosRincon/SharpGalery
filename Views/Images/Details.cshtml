@@ -4,13 +4,60 @@
     ViewBag.Title = "Details";
 }
 
+<style>
+    dl {
+        background:white;
+        box-sizing: border-box;
+        padding:5px;
+        box-sizing:border-box;
+        
+        display: flex;
+        flex-direction:column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    dl img {
+        border-radius: 3px;
+        border: 5px solid white;
+        box-shadow: 2px 5px 10px rgba(0,0,0,0.2);
+        margin: 15px 0;
+        height:310px;
+        width:310px;
+    }
+
+    dl dd{
+        background:white;
+        width:50%;
+        color:gray;
+        font-size:20px;
+        padding:0px 10px;
+        box-sizing:border-box;
+
+        display:flex;
+        justify-content:flex-start;
+        align-items:center;
+    }
+
+    #option-box{
+        background:white;
+        padding:5px;
+        width:100%;
+        height:auto;
+
+        display:flex;
+        justify-content:center;
+    }
+
+</style>
+
 <h2>Details</h2>
 
 <div>
     <hr/>
     <dl class="dl-horizontal">
         <dd>
-            <img src="@Url.Content(Model.ImagePath)" width="250" height="250" />
+            <img src="@Url.Content(Model.ImagePath)"  />
         </dd>
 
         @*<dt>
@@ -33,7 +80,9 @@
     </dl>
     <hr/>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ImageId },new { @class="btn btn-default"}) 
-    @Html.ActionLink("Back to List", "Index",null,new { @class="btn btn-primary"})
-</p>
+<div id="option-box">
+    <span>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ImageId }, new { @class = "btn btn-default" })
+        @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-primary" })
+    </span>
+</div>
