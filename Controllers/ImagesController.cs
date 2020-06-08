@@ -1,6 +1,7 @@
 ﻿using SharpGalery.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -48,6 +49,37 @@ namespace SharpGalery.Controllers
 
             return View();
         }
+
+        [HttpGet]
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Image image = db.Images.Find(id);
+            if (image == null)
+            {
+                return HttpNotFound();
+            }
+            return View(image);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(Image model)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(model).State = EntityState.Modified;
+                db.SaveChanges();
+                ModelState.Clear();
+                return RedirectToAction("Index");
+            }
+
+            return View(model);
+        }
+
 
         [HttpGet]
         public ActionResult Details(int? id)
