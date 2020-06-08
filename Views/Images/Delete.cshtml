@@ -4,32 +4,57 @@
     ViewBag.Title = "Detete";
 }
 
+<style>
+    #ctr-delete{
+        background:white;
+        padding:5px;
+        box-sizing:border-box;
+
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+    }
+
+    img{
+        width:250px;
+        height:250px;
+        border-radius:3px;
+        border:5px solid white;
+        box-shadow:0px 2px 5px rgba(0,0,0,0.5);
+        margin:10px 0;
+    }
+
+    p{
+      font-size:16px;
+
+    }
+
+    h3 {
+        color: orange;
+        font-size: 20px;
+        font-weight: 300;
+        padding: 5px;
+        box-sizing:border-box;
+        width:auto;
+        border-radius:3px;
+        border:1.5px solid transparent;
+        text-align:center;
+    }
+</style>
+
 <h2>Delete</h2>
-
 <h3>Are you sure you want to delete this?</h3>
-<div>
-    <hr />
-    <dl class="dl-horizontal">
-        <dd>
-            <img src="@Url.Content(Model.ImagePath)" width="250" height="250" />
-        </dd>
-        @*<dt>
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>*@
+<hr />
+<div id="ctr-delete">
+   
+    <img src="@Url.Content(Model.ImagePath)" />
 
-        <dd>
-            @Html.DisplayFor(model => model.Title)
-        </dd>
+    <p>
+        @Html.DisplayFor(model => model.Title)
+    </p>
 
-        @*<dt>
-            @Html.DisplayNameFor(model => model.ImagePath)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ImagePath)
-        </dd>*@
-
-    </dl>
+    <br/>
 
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
@@ -39,4 +64,6 @@
             @Html.ActionLink("Back to List", "Index",null,new { @class="btn btn-primary"})
         </div>
     }
+
 </div>
+
