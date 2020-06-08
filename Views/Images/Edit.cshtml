@@ -12,10 +12,14 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Image</h4>
+        @*<h4>Image</h4>*@
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.ImageId)
+
+        <div class="form-group">
+            <img src="@Url.Content(Model.ImagePath)" width="250" height="250" alt="" />
+        </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -43,7 +47,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "Index",null, new {@class="btn btn-primary" })
 </div>
 
 @section Scripts {
