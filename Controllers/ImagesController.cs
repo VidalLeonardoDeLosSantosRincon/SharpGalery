@@ -71,6 +71,13 @@ namespace SharpGalery.Controllers
         {
             if (ModelState.IsValid)
             {
+                string fileName = Path.GetFileNameWithoutExtension(model.ImageFile.FileName);
+                string extension = Path.GetExtension(model.ImageFile.FileName);
+                fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                model.ImagePath = "~/Img/" + fileName;
+                fileName = Path.Combine(Server.MapPath("~/Img/"), fileName);
+                model.ImageFile.SaveAs(fileName);
+
                 db.Entry(model).State = EntityState.Modified;
                 db.SaveChanges();
                 ModelState.Clear();
